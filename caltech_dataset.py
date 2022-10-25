@@ -45,7 +45,7 @@ class Caltech(VisionDataset):
           through the index
         - Labels should start from 0, so for Caltech you will have lables 0...100 (excluding the background class) 
         """
-        return self
+        # return self
 
     def __getitem__(self, index):
         """
@@ -67,7 +67,7 @@ class Caltech(VisionDataset):
         if self.transform is not None:
             image = self.transform(image)
 
-        return image, label
+        return (image, label)
 
     def __len__(self):
         """
