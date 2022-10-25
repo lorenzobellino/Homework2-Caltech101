@@ -33,7 +33,7 @@ class Caltech(VisionDataset):
                     os.path.join(self.root, "101_ObjectCategories", imgpath.strip())
                 )
                 labl = imgpath.strip().split("/")[0]
-                if labl not in self.labelDict:
+                if labl not in self.labelDict.values():
                     self.labelDict[i] = labl
                     i += 1
                 self.dataSet.append((img, i - 1))
@@ -45,6 +45,7 @@ class Caltech(VisionDataset):
           through the index
         - Labels should start from 0, so for Caltech you will have lables 0...100 (excluding the background class) 
         """
+        return self
 
     def __getitem__(self, index):
         """
@@ -56,10 +57,11 @@ class Caltech(VisionDataset):
             tuple: (sample, target) where target is class_index of the target class.
         """
 
-        image, label = ...  # Provide a way to access image and label via index
+        # image, label = ...  # Provide a way to access image and label via index
         # Image should be a PIL Image
         # label can be int
 
+        image, label = self.dataSet[index]
         # Applies preprocessing when accessing the image
         if self.transform is not None:
             image = self.transform(image)
