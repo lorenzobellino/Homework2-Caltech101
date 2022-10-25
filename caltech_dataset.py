@@ -62,7 +62,7 @@ class Caltech(VisionDataset):
         # label can be int
 
         image, label = self.dataSet[index]
-        print(label)
+
         # Applies preprocessing when accessing the image
         if self.transform is not None:
             image = self.transform(image)
